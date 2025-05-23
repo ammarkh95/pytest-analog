@@ -1,5 +1,7 @@
 # pytest-analog
 
+[![pytest-analog-release](https://github.com/ammarkh95/pytest-analog/actions/workflows/workflow.yml/badge.svg)](https://github.com/ammarkh95/pytest-analog/actions/workflows/workflow.yml)
+
 Python library / Pytest plugin for experimenting /testing with HW electronics and embedded systems using the following equipments:
 
 - [Analog Discovery](https://digilent.com/shop/analog-discovery-3/) by Digilent (USB mixed signal oscilliscope, signal generator and logic analyzer)
