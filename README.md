@@ -44,10 +44,10 @@ You need to install the following dependencies on your system so pytest-analog c
 - Install pytest_analog from test.pypi repository (**Currently the library is in testing and published only under test.pypi**)
 
   ```bash
-  python3 -m pip install -i https://test.pypi.org/simple/ pytest_analog # on Unix based OS
+  python3 -m pip install --extra-index-url https://test.pypi.org/simple/ pytest-analog # on Unix based OS
   ```
   ```powershell
-  python -m pip install -i https://test.pypi.org/simple/ pytest_analog  # on Windows
+  python -m pip install --extra-index-url https://test.pypi.org/simple/ pytest-analog # on Windows
   ```
 
 ## Usage
