@@ -1,9 +1,8 @@
 name: pytest-analog-release
 
 on:
-  push:
-    tags:
-      - v*
+  release:
+    types: [published]
 
   workflow_dispatch:
 
@@ -46,5 +45,32 @@ jobs:
       - name: Upload Wheel Package
         uses: actions/upload-artifact@v4
         with:
-          name: release-dists
+          name: pytest-analog
           path: dist/
+
+  test-pypi-publish:
+    runs-on: self-hosted
+
+    needs:
+      - release-build
+
+    permissions:
+      id-token: write
+
+    # Dedicated environments with protections for publishing are strongly recommended.
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/pytest-analog
+
+    steps:
+      - name: Retrieve release distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: pytest-analog
+          path: dist/
+
+      - name: Publish release distributions to Test PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
