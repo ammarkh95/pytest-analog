@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_test:
+  release-build:
     runs-on: self-hosted
     strategy:
       matrix:
@@ -21,9 +21,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
 
       - name: Setup Python virtual environment
         run: python -m venv venv
@@ -45,3 +42,9 @@ jobs:
           . venv\Scripts\activate
           python -m pip install --upgrade build
           python -m build -w
+
+      - name: Upload Wheel Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
