@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest_analog"
+description = "pytest plugin for embedded systems testing"
+readme = "Readme.md"
+requires-python = ">=3.9"
+keywords = [
+  "pytest",
+  "analog",
+  "testing",
+  "embedded",
+  "systems",
+  "electronics"
+]
+authors = [
+  {name ="Ammar Khallouf", email ="ammar.khallouf@tum.de"}
+]
+classifiers = [
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: MacOS",
+  "Operating System :: Unix",
+  "Operating System :: POSIX :: Linux",
+  "Framework :: Pytest",
+  "Natural Language :: English",
+  "Topic :: Software Development :: Testing",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "License :: OSI Approved :: MIT License"
+]
+
+dependencies = ["pytest>=7.4.4", "numpy>=1.26.0"]
+
+dynamic = ["version"]
+
+[project.optional-dependencies]
+lint = ["ruff>=0.11.11"]
+
+[project.urls]
+Homepage = "https://github.com/ammarkh95/pytest-analog"
+Documentation = "https://github.com/ammarkh95/pytest-analog"
+Repository = "https://github.com/ammarkh95/pytest-analog"
+
+[project.entry-points.pytest11]
+pytest_sit = "pytest_analog.plugin"
+pytest_sit_fixtures = "pytest_analog.fixtures"
+
+[tool.setuptools.dynamic]
+version = {attr = "pytest_analog.__about__.__version__"}
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+ignore = ["F405"]
