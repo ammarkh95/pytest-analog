@@ -34,3 +34,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -i https://test.pypi.org/simple/ pysmu
           python -m pip install .
+      
+      - name: Run tests
+        run: |
+          . venv\Scripts\activate
+          python -m pytest testing\test_pytest_analog_plugin.py
+
+      - name: Build Wheel package
+        run: |
+          . venv\Scripts\activate
+          python -m pip install --upgrade build
+          python -m build -w
